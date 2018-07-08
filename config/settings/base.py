@@ -37,12 +37,22 @@ USE_TZ = True
 # DATABASES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
-
-DATABASES = {
-    'default': env.db('DATABASE_URL', default='postgres:///tsd'),
-}
-DATABASES['default']['ATOMIC_REQUESTS'] = True
-
+if 'DATABASE_URL' in env:
+    DATABASES = {
+        'default': env.db('DATABASE_URL', default='postgres:///fcgg'),
+    }
+    DATABASES['default']['ATOMIC_REQUESTS'] = True
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'facecheck',
+            'USER': 'postgres',
+            'PASSWORD': 'helloworld',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
+    }
 # URLS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#root-urlconf
