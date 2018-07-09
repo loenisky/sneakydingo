@@ -46,7 +46,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'facecheck',
+            'NAME': 'tsd',
             'USER': 'postgres',
             'PASSWORD': 'helloworld',
             'HOST': 'localhost',
